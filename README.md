@@ -7,10 +7,11 @@
   - 発行：技術評論社 2022年7月1日
   - ISBN：978-4297129149
 
-
 ## 本書の実装を含んだLLVMリポジトリ
 
-https://github.com/msyksphinz-self/llvm-project
+本書でサポートしているのは以下の`llvm-myriscvx120`ブランチです。
+
+https://github.com/msyksphinz-self/llvm-project/tree/llvm-myriscvx120
 
 ### 実行方法
 
