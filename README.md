@@ -41,6 +41,39 @@ LLVM12で確認を行っています。LLVM13、LLVM14でも同様のコミッ�
 
 https://github.com/msyksphinz-self/llvm-myriscvx-tests
 
+## LLVMビルド時の推奨オプション
+
+本文では記載抜けしていましたが、RISC-Vビルドでの各種ライブラリ(`printf()`など)を扱うために`-DDEFAULT_SYSROOT=`オプションを適切に設定することが推奨されます。具体的には、以下のように`-DDEFAULT_SYSROOT`オプションを追加して、P.70にてツールチェインのインストール場所として使用している` ${HOME}/riscv64_github`を適宜読み替えてください。
+
+```sh
+cmake -G Ninja \
+	-DDEFAULT_SYSROOT=${HOME}/riscv_github/riscv64-unknown-elf \	# ここの部分
+	-DCMAKE_BUILD_TYPE="Debug" \
+	-DLLVM_TARGETS_TO_BUILD="X86;AArch64;RISCV;MYRISCVX" \
+	-DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" \
+  ../llvm
+```
+
+
+
+## 正誤表
+
+- P.102-P.103
+
+  - LLVMビルド+アセンブリ生成がうまく行かない。
+
+  - Issue: #1
+
+  - ビルドオプションの変更が必要です。#1を参照ください。具体的には、以下のコマンドフローとなります。
+
+    ```sh
+    $ ${BUILD}/bin/clang-12 riscv_test.c -emit-llvm -c --target=riscv64-unknown-elf
+    $ ${BUILD/build/bin/llc riscv_test.bc -march=riscv64 --float-abi=hard -mattr="+d,+f" -filetype=asm
+    $ riscv64-unknown-elf-gcc riscv_test.s -march=rv64gc -lc -o riscv_test
+    ```
+
+    
+
 ## 付録PDF
 
 - [付録1. 関数呼び出しのバリエーションと高度な機能(工事中)](advaced_func)
