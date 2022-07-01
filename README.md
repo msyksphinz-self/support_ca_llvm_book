@@ -59,13 +59,9 @@ cmake -G Ninja \
 ## 正誤表
 
 - P.102-P.103
-
   - LLVMビルド+アセンブリ生成がうまく行かない。
-
-  - Issue: #1
-
-  - ビルドオプションの変更が必要です。#1を参照ください。具体的には、以下のコマンドフローとなります。
-
+  - Issue: https://github.com/msyksphinz-self/support_ca_llvm_book/issues/1
+  - ビルドオプションの変更が必要です。 https://github.com/msyksphinz-self/support_ca_llvm_book/issues/1 を参照ください。具体的には、以下のコマンドフローとなります。
     ```sh
     $ ${BUILD}/bin/clang-12 riscv_test.c -emit-llvm -c --target=riscv64-unknown-elf
     $ ${BUILD/build/bin/llc riscv_test.bc -march=riscv64 --float-abi=hard -mattr="+d,+f" -filetype=asm
