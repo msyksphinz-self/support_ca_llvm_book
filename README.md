@@ -45,9 +45,11 @@ https://github.com/msyksphinz-self/llvm-myriscvx-tests
 
 本文では記載抜けしていましたが、RISC-Vビルドでの各種ライブラリ(`printf()`など)を扱うために`-DDEFAULT_SYSROOT=`オプションを適切に設定することが推奨されます。具体的には、以下のように`-DDEFAULT_SYSROOT`オプションを追加して、P.70にてツールチェインのインストール場所として使用している` ${HOME}/riscv64_github`を適宜読み替えてください。
 
+なお、P.96のx86(ホスト)用にビルドする際は`DEFAULT_SYSROOT`の設定は不要です。
+
 ```sh
 cmake -G Ninja \
-	-DDEFAULT_SYSROOT=${HOME}/riscv_github/riscv64-unknown-elf \	# ここの部分
+	-DDEFAULT_SYSROOT=${HOME}/riscv_github/riscv64-unknown-elf \	# RISC-V向けビルド時。ここの部分
 	-DCMAKE_BUILD_TYPE="Debug" \
 	-DLLVM_TARGETS_TO_BUILD="X86;AArch64;RISCV;MYRISCVX" \
 	-DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" \
@@ -89,10 +91,24 @@ $ xcode-select --install
 
 また、本書に記載しているビルドコマンドを、以下のように置き換えることが推奨されます。`DEFAULT_SYSROOT`のオプションはXCodeのインストール先に応じて適宜変更してください。
 
+- ホスト(非RISC-V)向けビルド時 (P.96)のコマンド実行時
+
 ```sh
 cmake -G Ninja \
 	-DCMAKE_OSX_ARCHITECTURES='arm64' \		# M1 Macの場合は本オプションを追加してください
 	-DDEFAULT_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk/ \
+	-DCMAKE_BUILD_TYPE="Debug" \
+	-DLLVM_TARGETS_TO_BUILD="host;AArch64;RISCV;MYRISCVX" \	# 本書ではx86としていますが、M1 Macの場合は"host"としてください
+	-DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" \
+  ../llvm
+```
+
+- RISC-V向けビルド実行時
+
+```sh
+cmake -G Ninja \
+	-DCMAKE_OSX_ARCHITECTURES='arm64' \		# M1 Macの場合は本オプションを追加してください
+	-DDEFAULT_SYSROOT=${HOME}/riscv_github/riscv64-unknown-elf \
 	-DCMAKE_BUILD_TYPE="Debug" \
 	-DLLVM_TARGETS_TO_BUILD="host;AArch64;RISCV;MYRISCVX" \	# 本書ではx86としていますが、M1 Macの場合は"host"としてください
 	-DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" \
