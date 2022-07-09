@@ -70,12 +70,12 @@ cmake -G Ninja \
     $ riscv64-unknown-elf-gcc riscv_test.s -march=rv64gc -lc -o riscv_test
     ```
 
-    
+
 
 ## 付録PDF
 
 - [付録1. 関数呼び出しのバリエーションと高度な機能](appendix/advanced_func.pdf)
-- [付録2. 浮動小数点命令(工事中)](fpu)
+- [付録2. 浮動小数点命令](appendix/fpu.pdf)
 
 ## 書籍に入り切らなかったあとがき
 
@@ -114,4 +114,3 @@ cmake -G Ninja \
 	-DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" \
   ../llvm
 ```
-
