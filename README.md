@@ -60,6 +60,10 @@ cmake -G Ninja \
 
 ## 正誤表
 
+- P.68 2段落目
+  - 誤: Calle Saved
+  - 正: Callee Saved
+  
 - P.102-P.103
   - LLVMビルド+アセンブリ生成がうまく行かない。
   - Issue: https://github.com/msyksphinz-self/support_ca_llvm_book/issues/1
