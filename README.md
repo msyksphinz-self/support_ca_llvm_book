@@ -79,8 +79,13 @@ cmake -G Ninja \
     $ ${BUILD/build/bin/llc riscv_test.bc -march=riscv64 --float-abi=hard -mattr="+d,+f" -filetype=asm
     $ riscv64-unknown-elf-gcc riscv_test.s -march=rv64gc -lc -o riscv_test
     ```
-
-
+  - これでも解決しない場合、`clang`のオプションに`--sysroot=`を追加して試行してください(https://github.com/msyksphinz-self/support_ca_llvm_book/issues/1#issuecomment-1186797222 にてご指摘いただきました。ありがとうございます)。
+    ```sh
+    $ ${BUILD}/bin/clang -emit-llvm -c riscv_test.c --target=riscv64-unknown-linux-gnu --sysroot=${HOME}/riscv64_github/sysroot
+    $ ${BUILD}/bin/llc riscv_test.bc -march=riscv64 -mattr="+d,+f" -filetype=asm
+    $ riscv64-unknown-linux-gnu-gcc riscv_test.s -lc -static -o riscv_test
+    $ spike pk riscv_test
+    ```
 
 ## 付録PDF
 
