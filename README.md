@@ -9,6 +9,9 @@
 
 ## 本書の実装を含んだLLVMリポジトリ
 
+書籍の解説ではLLVM実装の一部のみを抜粋して掲載しているため、ビルドおよびテストを行いたい場合、
+以下のLLVMブランチで完全なソースコードを参照していただきますよう、お願いいたします。
+
 本書でサポートしているのは以下の`llvm-myriscvx120`ブランチです。
 
 https://github.com/msyksphinz-self/llvm-project/tree/llvm-myriscvx120
