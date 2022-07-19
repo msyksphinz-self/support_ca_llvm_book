@@ -69,7 +69,9 @@ cmake -G Ninja \
 - P.68 2段落目
   - 誤: Calle Saved
   - 正: Callee Saved
-  
+- P.82 コマンド内:
+  - 誤: `  -fno-builtin-printf -nostdlib -nostartfiles -lm -lgcc -T link.ld \`
+  - 正: `  -fno-builtin-printf -nostdlib -nostartfiles -lm -lgcc -T test.ld \`
 - P.102-P.103
   - LLVMビルド+アセンブリ生成がうまく行かない。
   - Issue: https://github.com/msyksphinz-self/support_ca_llvm_book/issues/1
