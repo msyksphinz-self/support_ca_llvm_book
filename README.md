@@ -59,8 +59,6 @@ cmake -G Ninja \
   ../llvm
 ```
 
-
-
 ## 正誤表
 
 - P.33 「メモリストア命令」
@@ -69,6 +67,9 @@ cmake -G Ninja \
 - P.68 2段落目
   - 誤: Calle Saved
   - 正: Callee Saved
+- P.71 riscv-toolsのビルド (https://github.com/msyksphinz-self/support_ca_llvm_book/issues/6)
+  - 本書の確認した環境以外で、riscv-toolsがビルドに失敗することがあります。
+  - riscv-toolsリポジトリ自体が古くなっており、サブモジュールを最新版に更新する、または個別にツール群をビルドする必要があります。
 - P.82 コマンド内:
   - 誤: `  -fno-builtin-printf -nostdlib -nostartfiles -lm -lgcc -T link.ld \`
   - 正: `  -fno-builtin-printf -nostdlib -nostartfiles -lm -lgcc -T test.ld \`
