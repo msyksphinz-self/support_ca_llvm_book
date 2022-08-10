@@ -69,7 +69,12 @@ cmake -G Ninja \
   - 正: Callee Saved
 - P.71 riscv-toolsのビルド (https://github.com/msyksphinz-self/support_ca_llvm_book/issues/6)
   - 本書の確認した環境以外で、riscv-toolsがビルドに失敗することがあります。
-  - riscv-toolsリポジトリ自体が古くなっており、サブモジュールを最新版に更新する、または個別にツール群をビルドする必要があります。
+  - riscv-toolsリポジトリ自体が古くなっており、個別にツール群をビルドする必要があります。
+  - riscv-toolsからsubmoduleでリンクされているツールセットはdeprecatedされているようであり、各ツール群を個別にダウンロードしてビルドする必要があるようです。
+    - riscv-isa-sim : https://github.com/riscv-software-src/riscv-isa-sim
+    - riscv-tests : https://github.com/riscv-software-src/riscv-tests
+    - riscv-pk : https://github.com/riscv-software-src/riscv-pk
+    
 - P.82 コマンド内:
   - 誤: `  -fno-builtin-printf -nostdlib -nostartfiles -lm -lgcc -T link.ld \`
   - 正: `  -fno-builtin-printf -nostdlib -nostartfiles -lm -lgcc -T test.ld \`
