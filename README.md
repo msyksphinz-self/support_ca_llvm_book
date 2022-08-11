@@ -74,7 +74,7 @@ cmake -G Ninja \
     - riscv-isa-sim : https://github.com/riscv-software-src/riscv-isa-sim
     - riscv-tests : https://github.com/riscv-software-src/riscv-tests
     - riscv-pk : https://github.com/riscv-software-src/riscv-pk
-    
+  
 - P.82 コマンド内:
   - 誤: `  -fno-builtin-printf -nostdlib -nostartfiles -lm -lgcc -T link.ld \`
   - 正: `  -fno-builtin-printf -nostdlib -nostartfiles -lm -lgcc -T test.ld \`
@@ -94,6 +94,17 @@ cmake -G Ninja \
     $ riscv64-unknown-linux-gnu-gcc riscv_test.s -lc -static -o riscv_test
     $ spike pk riscv_test
     ```
+
+- P.195
+  - 誤: `simple_test.ll`というファイルを作成します
+  - 正: `simple_func.ll`というファイルを作成します
+  - 誤: ソースコードのパス`llvm/test/CodeGen/MYRISCVX/simple_test.ll`
+  - 正: ソースコードのパス`llvm/test/CodeGen/MYRISCVX/simple_func.ll`
+- P.513
+  - 誤: ソースコードのパス`llvm-myriscvx120/test/CodeGen/RISCV`
+  - 正: ソースコードのパス`llvm-myriscvx120/llvm/test/CodeGen/RISCV`
+
+
 
 ## 付録PDF
 
