@@ -64,9 +64,11 @@ cmake -G Ninja \
 - P.33 「メモリストア命令」
   - 誤: 「それぞれ32ビット、8ビット、16ビットのデータを読み出す例です」
   - 正: 「それぞれ32ビット、8ビット、16ビットのデータをメモリに書き込む例です」
+  
 - P.68 2段落目
   - 誤: Calle Saved
   - 正: Callee Saved
+  
 - P.71 riscv-toolsのビルド (https://github.com/msyksphinz-self/support_ca_llvm_book/issues/6)
   - 本書の確認した環境以外で、riscv-toolsがビルドに失敗することがあります。
   - riscv-toolsリポジトリ自体が古くなっており、個別にツール群をビルドする必要があります。
@@ -78,6 +80,7 @@ cmake -G Ninja \
 - P.82 コマンド内:
   - 誤: `  -fno-builtin-printf -nostdlib -nostartfiles -lm -lgcc -T link.ld \`
   - 正: `  -fno-builtin-printf -nostdlib -nostartfiles -lm -lgcc -T test.ld \`
+  
 - P.102-P.103
   - LLVMビルド+アセンブリ生成がうまく行かない。
   - Issue: https://github.com/msyksphinz-self/support_ca_llvm_book/issues/1
@@ -100,6 +103,12 @@ cmake -G Ninja \
   - 正: `simple_func.ll`というファイルを作成します
   - 誤: ソースコードのパス`llvm/test/CodeGen/MYRISCVX/simple_test.ll`
   - 正: ソースコードのパス`llvm/test/CodeGen/MYRISCVX/simple_func.ll`
+  
+- P.325
+
+  - 誤: R_MYRISCVX_LO12_I / R_MYRISCVX_LO12_S / R_MYRISCVX_PCREL_LO12_I / R_MYRISCVX_PCREL_LO12_S の説明欄がすべて「上位12ビット」となっている
+  - 正: 「下位12ビット」
+
 - P.513
   - 誤: ソースコードのパス`llvm-myriscvx120/test/CodeGen/RISCV`
   - 正: ソースコードのパス`llvm-myriscvx120/llvm/test/CodeGen/RISCV`
