@@ -109,6 +109,28 @@ cmake -G Ninja \
   - 誤: R_MYRISCVX_LO12_I / R_MYRISCVX_LO12_S / R_MYRISCVX_PCREL_LO12_I / R_MYRISCVX_PCREL_LO12_S の説明欄がすべて「上位12ビット」となっている
   - 正: 「下位12ビット」
 
+- P.333
+
+  - 誤: `static`ポリシかつ`medlow`コードモデルの際、LLVMで出力したものをgccの結果と比較する際に`objdump`したコードが、`static`ポリシかつ`medany`のものになっています。
+
+    - `auipc`命令などが使用されていますが、これは`medany`コードモデルのものです。
+
+  - 正しくは以下のようになります。
+
+  - ```
+    0000000000000000 <update_global>:
+       0:   00000537                lui     a0,0x0
+                            0: R_RISCV_HI20 global_val
+                            0: R_RISCV_RELAX        *ABS*
+       4:   00050513                mv      a0,a0
+                            4: R_RISCV_LO12_I       global_val
+                            4: R_RISCV_RELAX        *ABS*
+       8:   00052583                lw      a1,0(a0) # 0 <update_global>
+       c:   00158593                addi    a1,a1,1
+      10:   00b52023                sw      a1,0(a0)
+      14:   00008067                ret
+    ```
+
 - P.513
   - 誤: ソースコードのパス`llvm-myriscvx120/test/CodeGen/RISCV`
   - 正: ソースコードのパス`llvm-myriscvx120/llvm/test/CodeGen/RISCV`
