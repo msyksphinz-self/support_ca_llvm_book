@@ -106,7 +106,7 @@ cmake -G Ninja \
   
 - P.325
 
-  - 誤: R_MYRISCVX_LO12_I / R_MYRISCVX_LO12_S / R_MYRISCVX_PCREL_LO12_I / R_MYRISCVX_PCREL_LO12_S の説明欄がすべて「上位12ビット」となっている
+  - 誤: `R_MYRISCVX_LO12_I` / `R_MYRISCVX_LO12_`S / `R_MYRISCVX_PCREL_LO12_I` / `R_MYRISCVX_PCREL_LO12_S` の説明欄がすべて「上位12ビット」となっている
   - 正: 「下位12ビット」
   - 誤: `R_MYRISCVX_PCREL_LO12_I`と`R_MYRISCVX_PCREL_LO12_S`の説明欄が「絶対アドレスの上位12ビット」となっている
   - 正: 「PC相対アドレスの下位12ビット」
