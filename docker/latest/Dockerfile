@@ -27,14 +27,19 @@ ENV LD_LIBRARY_PATH $RISCV/lib:$LD_LIBRARY_PATH
 RUN apt install -y autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev libusb-1.0-0-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev device-tree-compiler pkg-config libexpat-dev
 
 WORKDIR /tmp
-RUN git clone https://github.com/riscv/riscv-tools.git --recurse-submodules
+RUN git clone https://github.com/riscv-software-src/riscv-isa-sim.git --recurse-submodules && \
+    cd riscv-isa-sim && \
+    ./configure --prefix=$RISCV && \
+    make -j$(nproc) && \
+    make install
 
-WORKDIR /tmp/riscv-tools
-RUN sed -i '/check_version automake/s/^/#/g' build.sh
-RUN sed -i '/check_version autoconf/s/^/#/g' build.sh
-RUN sed -i '/build_project riscv-openocd/s/^/#/g' build.sh
-RUN sed -i '/build_project riscv-tests/s/^/#/g' build.sh
-RUN  MAKEFLAGS="-j$(nproc)" ./build.sh
+RUN git clone https://github.com/riscv-software-src/riscv-pk.git --recurse-submodules && \
+    cd riscv-pk && \
+    mkdir -p build && \
+    cd build && \
+    ../configure --prefix=$RISCV --host riscv64-unknown-elf && \
+    make -j$(nproc) && \
+    make install
 
 #
 # Install Chipyard
