@@ -15,6 +15,7 @@ ENV RISCV /llvm_book/riscv64_github
 # RUN ../configure --prefix=$RISCV
 # RUN make -j$(nproc)
 
+WORKDIR /llvm_book/
 RUN curl -L https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2022.08.08/riscv64-elf-ubuntu-20.04-nightly-2022.08.08-nightly.tar.gz   | tar xz
 RUN curl -L https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2022.08.08/riscv64-glibc-ubuntu-20.04-nightly-2022.08.08-nightly.tar.gz | tar xz
 RUN curl -L https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2022.08.08/riscv64-musl-ubuntu-20.04-nightly-2022.08.08-nightly.tar.gz  | tar xz
