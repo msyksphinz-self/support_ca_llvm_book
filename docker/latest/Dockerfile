@@ -7,13 +7,18 @@ RUN apt-get install -y git
 
 ENV RISCV /llvm_book/riscv64_github
 
-WORKDIR /tmp
-RUN git clone https://github.com/riscv/riscv-gnu-toolchain --depth 1 -b 2021.01.26
-WORKDIR /tmp/riscv-gnu-toolchain
-RUN mkdir build
-WORKDIR /tmp/riscv-gnu-toolchain/build
-RUN ../configure --prefix=$RISCV
-RUN make -j$(nproc)
+# WORKDIR /tmp
+# RUN git clone https://github.com/riscv/riscv-gnu-toolchain --depth 1 -b 2021.01.26
+# WORKDIR /tmp/riscv-gnu-toolchain
+# RUN mkdir build
+# WORKDIR /tmp/riscv-gnu-toolchain/build
+# RUN ../configure --prefix=$RISCV
+# RUN make -j$(nproc)
+
+RUN curl -L https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2022.08.08/riscv64-elf-ubuntu-20.04-nightly-2022.08.08-nightly.tar.gz   | tar xz
+RUN curl -L https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2022.08.08/riscv64-glibc-ubuntu-20.04-nightly-2022.08.08-nightly.tar.gz | tar xz
+RUN curl -L https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2022.08.08/riscv64-musl-ubuntu-20.04-nightly-2022.08.08-nightly.tar.gz  | tar xz
+RUN mv /llvm_book/riscv $RISCV
 
 ENV PATH            $RISCV/bin:$PATH
 ENV LD_LIBRARY_PATH $RISCV/lib:$LD_LIBRARY_PATH
