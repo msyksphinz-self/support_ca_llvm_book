@@ -41,34 +41,36 @@ RUN git clone https://github.com/riscv-software-src/riscv-pk.git --recurse-submo
     make -j$(nproc) && \
     make install
 
-#
+# =================================
 # Install Chipyard
-#
+# =================================
 WORKDIR /llvm_book
-RUN git clone https://github.com/ucb-bar/chipyard.git -b 1.3.0
+RUN git clone https://github.com/ucb-bar/chipyard.git -b 1.7.1
 WORKDIR /llvm_book/chipyard
 
-# Replace torture/env submodule command
-RUN git submodule update --init --recursive generators/rocket-chip; exit 0  # Initially get error --> ignore
-RUN sed -i "s/git:/https:/g" generators/rocket-chip/torture/.gitmodules
-RUN git submodule sync --recursive
 RUN ./scripts/init-submodules-no-riscv-tools.sh
 Shell ["/bin/bash", "-c"]
-# RUN MAKEFLAGS="-j$(nproc)" ./scripts/build-toolchains.sh riscv-tools
-# RUN . ./env.sh
-# ENV PATH            $RISCV/bin:$PATH
-# ENV LD_LIBRARY_PATH $RISCV/lib:$LD_LIBRARY_PATH
-# RUN MAKEFLAGS="-j$(nproc)" ./scripts/build-toolchains.sh ec2fast
+RUN . ./env.sh
+ENV PATH            $RISCV/bin:$PATH
+ENV LD_LIBRARY_PATH $RISCV/lib:$LD_LIBRARY_PATH
+RUN git config --global http.postBuffer 10485760000
+RUN apt install -y git perl python3
+RUN MAKEFLAGS="-j$(nproc)" ./scripts/build-toolchains.sh riscv-tools
 
 # =================================
 # Option : Make Rocket-Chip / BOOM
 # =================================
 
+RUN apt install -y git perl python3 make autoconf g++ flex bison ccache
+RUN apt install -y libgoogle-perftools-dev numactl perl-doc
+RUN apt install -y libfl2  # Ubuntu only (ignore if gives error)
+RUN apt install -y libfl-dev  # Ubuntu only (ignore if gives error)
+
 # Install Verilator
 WORKDIR /tmp/
 RUN git clone http://git.veripool.org/git/verilator
 WORKDIR /tmp/verilator
-RUN git checkout v4.034
+RUN git checkout v4.224
 RUN autoconf && ./configure && make -j$(nproc) && make install
 
 RUN apt install -y libgmp-dev libmpfr-dev libmpc-dev zlib1g-dev vim default-jdk default-jre
