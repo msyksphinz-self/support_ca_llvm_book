@@ -51,11 +51,11 @@ WORKDIR /llvm_book/chipyard
 RUN ./scripts/init-submodules-no-riscv-tools.sh
 Shell ["/bin/bash", "-c"]
 RUN . ./env.sh
-ENV PATH            $RISCV/bin:$PATH
-ENV LD_LIBRARY_PATH $RISCV/lib:$LD_LIBRARY_PATH
-RUN git config --global http.postBuffer 10485760000
-RUN apt install -y git perl python3
-RUN MAKEFLAGS="-j$(nproc)" ./scripts/build-toolchains.sh riscv-tools
+# ENV PATH            $RISCV/bin:$PATH
+# ENV LD_LIBRARY_PATH $RISCV/lib:$LD_LIBRARY_PATH
+# RUN git config --global http.postBuffer 10485760000
+# RUN apt install -y git perl python3
+# RUN MAKEFLAGS="-j$(nproc)" ./scripts/build-toolchains.sh riscv-tools
 
 # =================================
 # Option : Make Rocket-Chip / BOOM
