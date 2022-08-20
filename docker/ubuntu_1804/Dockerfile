@@ -95,7 +95,7 @@ RUN ./bootstrap -- -DCMAKE_USE_OPENSSL=OFF && make -j$(nproc)
 RUN make install
 ENV PATH /llvm_book/cmake-3.24.0/bin/:$PATH
 
-RUN apt install build-ninja
+RUN apt install ninja-build
 WORKDIR /llvm_book/
 RUN git clone https://github.com/msyksphinz-self/llvm-project.git -b llvm-myriscvx120 llvm-myriscvx120
 WORKDIR /llvm_book/llvm-myriscvx120
