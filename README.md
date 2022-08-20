@@ -104,13 +104,21 @@ cmake -G Ninja \
   - 誤: ソースコードのパス`llvm/test/CodeGen/MYRISCVX/simple_test.ll`
   - 正: ソースコードのパス`llvm/test/CodeGen/MYRISCVX/simple_func.ll`
   
+- P.210 / P.213
+  
+  - ソースコード・コマンド内のファイル名表記にぶれがあります
+  
+  - 誤: `constant2.*`
+  
+  - 正: `constants2.*`
+  
 - P.325
 
   - 誤: `R_MYRISCVX_LO12_I` / `R_MYRISCVX_LO12_`S / `R_MYRISCVX_PCREL_LO12_I` / `R_MYRISCVX_PCREL_LO12_S` の説明欄がすべて「上位12ビット」となっている
   - 正: 「下位12ビット」
   - 誤: `R_MYRISCVX_PCREL_LO12_I`と`R_MYRISCVX_PCREL_LO12_S`の説明欄が「絶対アドレスの上位12ビット」となっている
   - 正: 「PC相対アドレスの下位12ビット」
-  
+
 - P.333
 
   - 誤: `static`ポリシかつ`medlow`コードモデルの際、LLVMで出力したものをgccの結果と比較する際に`objdump`したコードが、`static`ポリシかつ`medany`のものになっています。
