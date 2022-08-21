@@ -76,7 +76,12 @@ cmake -G Ninja \
     - riscv-isa-sim : https://github.com/riscv-software-src/riscv-isa-sim
     - riscv-tests : https://github.com/riscv-software-src/riscv-tests
     - riscv-pk : https://github.com/riscv-software-src/riscv-pk
-  
+
+- P.71
+  - 誤: 「完了たら」
+  - 正: 「完了したら」
+
+
 - P.82 コマンド内:
   - 誤: `  -fno-builtin-printf -nostdlib -nostartfiles -lm -lgcc -T link.ld \`
   - 正: `  -fno-builtin-printf -nostdlib -nostartfiles -lm -lgcc -T test.ld \`
