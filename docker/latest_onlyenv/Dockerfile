@@ -11,6 +11,7 @@ RUN apt install -y libfl2  # Ubuntu only (ignore if gives error)
 RUN apt install -y libfl-dev  # Ubuntu only (ignore if gives error)
 RUN apt install -y libgmp-dev libmpfr-dev libmpc-dev zlib1g-dev vim default-jdk default-jre
 RUN apt install -y libexpat1-dev libusb-dev libusb-1.0-0-dev libncurses5-dev
+RUN apt install -y ninja-build
 
 # install sbt: https://www.scala-sbt.org/release/docs/Installing-sbt-on-Linux.html#Ubuntu+and+other+Debian-based+distributions
 RUN echo "deb https://repo.scala-sbt.org/scalasbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list
@@ -61,6 +62,14 @@ RUN git clone https://github.com/riscv-software-src/riscv-pk.git --recurse-submo
     make -j$(nproc) && \
     make install
 
+RUN git clone https://github.com/riscv-software-src/riscv-tests.git --recurse-submodules && \
+    cd riscv-tests && \
+    mkdir -p build && \
+    cd build && \
+    ../configure --prefix=$RISCV && \
+    make -j$(nproc) && \
+    make install
+
 # =================================
 # Install Chipyard
 # =================================
@@ -86,3 +95,21 @@ RUN autoconf && ./configure && make -j$(nproc) && make install
 WORKDIR /llvm_book/chipyard/sims/verilator
 RUN make CONFIG=RocketConfig
 RUN make CONFIG=MediumBoomConfig
+
+WORKDIR /llvm_book
+
+# ======================
+# Make Appropriate Owner
+# ======================
+RUN addgroup --gid 1000 llvm-user && \
+    adduser --uid 1000 --ingroup llvm-user --home /home/llvm-user --shell /bin/sh --disabled-password --gecos "" llvm-user
+
+RUN USER=llvm-user && \
+    GROUP=llvm-user && \
+    curl -SsL https://github.com/boxboat/fixuid/releases/download/v0.5.1/fixuid-0.5.1-linux-amd64.tar.gz | tar -C /usr/local/bin -xzf - && \
+    chmod 4755 /usr/local/bin/fixuid && \
+    mkdir -p /etc/fixuid && \
+    printf "user: $USER\ngroup: $GROUP\n" > /etc/fixuid/config.yml
+
+USER llvm-user:llvm-user
+ENTRYPOINT ["fixuid"]
