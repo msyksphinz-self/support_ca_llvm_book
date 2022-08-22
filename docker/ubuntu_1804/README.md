@@ -16,13 +16,11 @@ https://hub.docker.com/repository/docker/msyksphinz/support_llvm
 
 - Ubuntu 18.04 LTSを使用しています
 - ツールチェインはゲストマシンの`/llvm_book`に展開されます
-- RISC-V GNU Toolchainは2022.08.08のものを自動的にダウンロードして展開しています
-  - https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2022.08.08/
-- riscv-toolsは、以下のサブリポジトリを、個々のGitHubリポジトリから最新版を取得してビルドしています
-  - https://github.com/riscv-software-src/riscv-isa-sim.git
-  - https://github.com/riscv-software-src/riscv-pk.git
-  - https://github.com/riscv-software-src/riscv-tests.git
-- Chipyard RTL実行環境は 1.7.1をダウンロードし、BOOMとRocketをあらかじめビルドしてあります
+- RISC-V GNU Toolchainは2021.03.06のものを自動的にダウンロードして展開しています
+  -  https://github.com/riscv-collab/riscv-gnu-toolchain/releases/download/2021.03.06/
+- riscv-toolsは、オリジナルのリポジトリをダウンロードした後で、いくつか改変してコンパイルが通るように修正しています
+  - https://github.com/riscv-software-src/riscv-tools.git
+- Chipyard RTL実行環境は 1.3.0をダウンロードし、BOOMとRocketをあらかじめビルドしてあります
   - `/llvm_book/chipyard/sims/verilator`に、Chipyardのビルド済みバイナリを格納しています
 - LLVM作業用リポジトリは`/llvm_book`にダウンロードし、ビルド済みです
   - バイナリ生成済みですので、すぐにテストやRTLシミュレーションを実行することができます

@@ -12,5 +12,5 @@ echo "---------------------------------"
 echo " Running Docker ..."
 echo "---------------------------------"
 
-docker pull msyksphinz/support_llvm:ubuntu_2204_onlyenv
-docker run --rm -v ${PWD}/llvm-project:/llvm-project/ -it support_llvm:ubuntu_2204_onlyenv "/bin/bash"
+docker pull msyksphinz/support_llvm:ubuntu_1804_onlyenv
+docker run --rm -v ${PWD}/llvm-project:/llvm-project/ -it support_llvm:ubuntu_1804_onlyenv "/bin/bash"

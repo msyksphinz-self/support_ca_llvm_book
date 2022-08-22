@@ -42,7 +42,7 @@ RUN  MAKEFLAGS="-j$(nproc)" ./build.sh
 # Install Chipyard
 #
 WORKDIR /llvm_book
-RUN git clone https://github.com/ucb-bar/chipyard.git -b 1.7.0
+RUN git clone https://github.com/ucb-bar/chipyard.git -b 1.3.0
 WORKDIR /llvm_book/chipyard
 
 # Replace torture/env submodule command
