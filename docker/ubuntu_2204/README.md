@@ -35,12 +35,13 @@ https://hub.docker.com/repository/docker/msyksphinz/support_llvm
 
 ```sh
 $ cd llvm_work  # ホスト作業環境
-$ wget https://github.com/msyksphinz-self/support_ca_llvm_book/blob/92a537346b68f31a0f56fd13813e3c8de4b3f22b/docker/ubuntu_2204/work/run.sh
+$ wget https://raw.githubusercontent.com/msyksphinz-self/support_ca_llvm_book/main/docker/ubuntu_2204/work/run.sh
 ```
 
 2. `run.sh`を実行します。これにより、Dockerイメージのダウンロードと、Dockerコンテナの立ち上げとログインが行われます。
 
 ```sh
+$ chmod +x ./run.sh
 $ ./run.sh
 ```
 

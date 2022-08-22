@@ -32,8 +32,8 @@ https://hub.docker.com/repository/docker/msyksphinz/support_llvm
 
 ```sh
 $ cd llvm_work  # ホスト作業環境
-$ wget https://github.com/msyksphinz-self/support_ca_llvm_book/blob/92a537346b68f31a0f56fd13813e3c8de4b3f22b/docker/latest_onlyenv/work/make_env.sh
-$ wget https://github.com/msyksphinz-self/support_ca_llvm_book/blob/92a537346b68f31a0f56fd13813e3c8de4b3f22b/docker/latest_onlyenv/work/run.sh
+$ wget https://github.com/msyksphinz-self/support_ca_llvm_book/blob/main/docker/ubuntu_1804_onlyenv/work/make_env.sh
+$ wget https://github.com/msyksphinz-self/support_ca_llvm_book/blob/main/docker/ubuntu_1804_onlyenv/work/run.sh
 ```
 
 2. 最初にDockerイメージを立ち上げる前に一度だけ、`make_env.sh`を実行します。
@@ -46,6 +46,7 @@ $ ./make_env.sh    # .envが作られる
 3. `run.sh`を実行します。これにより、Dockerイメージのダウンロードと(初回にのみ)LLVMリポジトリのダウンロードが行われ、Dockerコンテナの立ち上げとログインが行われます。
 
 ```sh
+$ chmod +x ./run.sh
 $ ./run.sh
 ```
 
