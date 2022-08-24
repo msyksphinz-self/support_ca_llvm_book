@@ -1,9 +1,9 @@
 FROM ubuntu:22.04
 
 RUN apt update
-RUN apt-get install -y autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev
+RUN apt install -y autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev
 
-RUN apt-get install -y git
+RUN apt install -y git
 
 ENV RISCV /llvm_book/riscv64_github
 
@@ -100,10 +100,12 @@ RUN ./bootstrap -- -DCMAKE_USE_OPENSSL=OFF && make -j$(nproc)
 RUN make install
 ENV PATH /llvm_book/cmake-3.24.0/bin/:$PATH
 
+RUN apt install -y ninja-build
+
 WORKDIR /llvm_book/
 RUN git clone https://github.com/msyksphinz-self/llvm-project.git -b llvm-myriscvx120 llvm-myriscvx120
 WORKDIR /llvm_book/llvm-myriscvx120
 RUN mkdir build
 WORKDIR /llvm_book/llvm-myriscvx120/build
-RUN cmake -G Ninja -DCMAKE_BUILD_TYPE="Debug" -DLLVM_TARGETS_TO_BUILD="host;RISCV;MYRSICVX" -DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" ../llvm
+RUN cmake -G Ninja -DCMAKE_BUILD_TYPE="Debug" -DLLVM_TARGETS_TO_BUILD="host;RISCV;MYRISCVX" -DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" ../llvm
 RUN ninja
