@@ -89,6 +89,16 @@
   - 誤: ソースコードのパス`llvm/test/CodeGen/MYRISCVX/simple_test.ll`
   - 正: ソースコードのパス`llvm/test/CodeGen/MYRISCVX/simple_func.ll`
 
+- P.201 図16に誤りが含まれています
+
+  
+  - ![figure16_fix](figure16_fix.PNG)
+  
+- P.202
+
+  
+  - 0x12345defの生成の生成フローとなっているが、図17に準ずると0x01234defの生成が正しい
+  
 - P.210 / P.213
 
   - ソースコード・コマンド内のファイル名表記にぶれがあります
@@ -171,6 +181,7 @@
 - P.404 ソースコード内
   - 誤: `// loaImmediate()を呼び出して`
   - 正: `// loadImmediate()を呼び出して`
+
 - P.404 ２段落目
   - 誤: 完了れば
   - 正: 完了すれば
@@ -192,13 +203,13 @@
   - 正: `parseImmediate()`
   - 誤: `ParseRegister()`
   - 正: `parseRegister()`
-  
+
 - P.481 3段落目
   - 誤: `ParseMemOperand()`
   - 正: `parseMemOperand()`
   - 誤: `ParseImmediate()`
   - 正: `parseImmediate()`
-  
+
 - P.488 `MYRISCVXAsmParser.cpp`
   - 誤: `// -2048 から 2048までの`
   - 正: `// -2048 から 2047までの`
@@ -218,7 +229,7 @@
 - P.501 1段落目
     - 誤: マスが０でない場所を探しクイーンを配置し
     - 正: マスの値が０である場所を探しクイーンを配置し
-    
+
 - P.513
 
   - 誤: ソースコードのパス`llvm-myriscvx120/test/CodeGen/RISCV`
