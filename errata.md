@@ -4,7 +4,7 @@
   - 誤: 「それぞれ32ビット、8ビット、16ビットのデータを読み出す例です」
   - 正: 「それぞれ32ビット、8ビット、16ビットのデータをメモリに書き込む例です」
 
-- P64. 2段落目
+- P.64 2段落目
   - 誤: Machine Execption Program Counter
   - 正: Machine Exception Program Counter
 
@@ -23,7 +23,7 @@
 - P.71
   - 誤: 「完了たら」
   - 正: 「完了したら」
-- P75. `0x101de`
+- P.75 `0x101de`
   - 誤: `MV a5, a1`
   - 正: `MV a0, a5`
 
@@ -33,7 +33,7 @@
   - 誤: `  -fno-builtin-printf -nostdlib -nostartfiles -lm -lgcc -T link.ld \`
   - 正: `  -fno-builtin-printf -nostdlib -nostartfiles -lm -lgcc -T test.ld \`
 
-- P91. LLVM IR (コード内関数名)
+- P.91 LLVM IR (コード内関数名)
   - 誤: `@add1`
   - 正: `@add`
 
@@ -60,11 +60,11 @@
     $ spike pk riscv_test
     ```
 
-- P127. 3段落目
+- P.127 3段落目
   - 誤: `SubtargetFeature`のに与えている
   - 正: `SubtargetFeature`に与えている
 
-- P141. `MYRISCVXCallingConv.td`コード内
+- P.141 `MYRISCVXCallingConv.td`コード内
   - 誤: Calee Saved
   - 正: Callee Saved
 
@@ -73,12 +73,12 @@
   - データアライメントの説明において、`iA:B`という説明のみを行っていますが、直後のソースコードで`iA:B:C`という表記を用いている
   - `iA:B:C`の場合、Bのサイズでアライメントするが、Cのサイズでアライメントすることが好ましい、という意味になる
 
-- P152. `MYRISCVXCallingConv.td`コード内
+- P.152 `MYRISCVXCallingConv.td`コード内
 
   - 誤: Calee Saved
   - 正: Callee Saved
 
-- P185. リスト内
+- P.185 リスト内
   - 誤: `LowerRetrun()`
   - 正: `LowerReturn()`
 
@@ -97,23 +97,23 @@
 
   - 正: `constants2.*`
 
-- P235. 4段落目
+- P.235 4段落目
   - 誤: MahineInstr
   - 正: MachineInstr
 
-- P260. 論理和命令
+- P.260 論理和命令
   - 誤: `ORI rd, rd2, imm`
   - 正: `ORI rd, rd1, imm`
 
-- P263. 最終段落
+- P.263 最終段落
   - 誤: だけだ異なります
   - 正: だけが異なります
 
-- P265. 3段落目
+- P.265 3段落目
   - 誤: 作業としてはの
   - 正: 作業としては
 
-- P287. 2段落目
+- P.287 2段落目
   - 誤: `rotate_lef()`
   - 正: `rotate_left()`
 
@@ -146,29 +146,29 @@
       14:   00008067                ret
     ```
 
-- P336. ２つ目のプログラム例
+- P.336 ２つ目のプログラム例
   - 誤: 20番目の要素のアドレスを示す
   - 正: 10番目の要素のアドレスを示す
   - 誤: `&array_char[20]`
   - 正: `&array_char[10]`
 
-- P353. switch文
+- P.353 switch文
   - 誤: `/* default 選択文`
   - 正: `/* default 選択文 */`
 
-- P358. 1つ目のアセンブリ表現
+- P.358 1つ目のアセンブリ表現
   - 誤: `EXp1 == x0をFinishの条件にしているが`
   - 正: `Cond == x0をFinishの条件にしているが`
 
-- P388. 図44
+- P.388 図44
   - 誤: `func_calee`
   - 正: `func_callee`
 
-- P393. 1段落目
+- P.393 1段落目
   - 誤: `TargetLowerig::LowerCall()`
   - 正: `TargetLowering::LowerCall()`
 
-- P404. ソースコード内
+- P.404 ソースコード内
   - 誤: `// loaImmediate()を呼び出して`
   - 正: `// loadImmediate()を呼び出して`
 - P.404 ２段落目
