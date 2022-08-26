@@ -107,5 +107,5 @@ RUN git clone https://github.com/msyksphinz-self/llvm-project.git -b llvm-myrisc
 WORKDIR /llvm_book/llvm-myriscvx120
 RUN mkdir build
 WORKDIR /llvm_book/llvm-myriscvx120/build
-RUN cmake -G Ninja -DCMAKE_BUILD_TYPE="Debug" -DLLVM_TARGETS_TO_BUILD="host;RISCV;MYRISCVX" -DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" ../llvm
+RUN cmake -G Ninja -DLLVM_PARALLEL_LINK_JOBS=2 -DCMAKE_BUILD_TYPE="Debug" -DLLVM_TARGETS_TO_BUILD="host;RISCV;MYRISCVX" -DLLVM_ENABLE_PROJECTS="clang;libcxx;libcxxabi" ../llvm
 RUN ninja
