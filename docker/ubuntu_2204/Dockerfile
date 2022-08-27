@@ -44,27 +44,24 @@ RUN git clone https://github.com/riscv-software-src/riscv-pk.git --recurse-submo
 # =================================
 # Install Chipyard
 # =================================
+RUN apt install -y git perl python3 make autoconf g++ flex bison ccache
+RUN apt install -y libgoogle-perftools-dev numactl perl-doc
+RUN apt install -y libfl2  # Ubuntu only (ignore if gives error)
+RUN apt install -y libfl-dev  # Ubuntu only (ignore if gives error)
+
 WORKDIR /llvm_book
 RUN git clone https://github.com/ucb-bar/chipyard.git -b 1.7.1
 WORKDIR /llvm_book/chipyard
 
 RUN ./scripts/init-submodules-no-riscv-tools.sh
+RUN LD_LIBRARY_PATH="" ./scripts/build-toolchains.sh riscv-tools --ignore-qemu
 Shell ["/bin/bash", "-c"]
 RUN . ./env.sh
-# ENV PATH            $RISCV/bin:$PATH
-# ENV LD_LIBRARY_PATH $RISCV/lib:$LD_LIBRARY_PATH
-# RUN git config --global http.postBuffer 10485760000
-# RUN apt install -y git perl python3
-# RUN MAKEFLAGS="-j$(nproc)" ./scripts/build-toolchains.sh riscv-tools
+RUN . ./env-riscv-tools.sh
 
 # =================================
 # Option : Make Rocket-Chip / BOOM
 # =================================
-
-RUN apt install -y git perl python3 make autoconf g++ flex bison ccache
-RUN apt install -y libgoogle-perftools-dev numactl perl-doc
-RUN apt install -y libfl2  # Ubuntu only (ignore if gives error)
-RUN apt install -y libfl-dev  # Ubuntu only (ignore if gives error)
 
 # Install Verilator
 WORKDIR /tmp/
@@ -83,9 +80,9 @@ RUN apt update
 RUN apt install -y sbt
 RUN apt install -y texinfo gengetopt
 RUN apt install -y libexpat1-dev libusb-dev libncurses5-dev cmake
-WORKDIR /llvm_book/chipyard/sims/verilator
-RUN make CONFIG=RocketConfig
-RUN make CONFIG=MediumBoomConfig
+WORKDIR /llvm_book/chipyard/
+RUN . ./env.sh && . ./env-riscv-tools.sh && make -C ./sims/verilator CONFIG=RocketConfig
+RUN . ./env.sh && . ./env-riscv-tools.sh && make -C ./sims/verilator CONFIG=MediumBoomConfig
 
 # =================================
 # Download and Build LLVM

@@ -92,9 +92,9 @@ WORKDIR /tmp/verilator
 RUN git checkout v4.224
 RUN autoconf && ./configure && make -j$(nproc) && make install
 
-WORKDIR /llvm_book/chipyard/sims/verilator
-RUN make CONFIG=RocketConfig
-RUN make CONFIG=MediumBoomConfig
+WORKDIR /llvm_book/chipyard/
+RUN . ./env.sh && . ./env-riscv-tools.sh && make -C ./sims/verilator CONFIG=RocketConfig
+RUN . ./env.sh && . ./env-riscv-tools.sh && make -C ./sims/verilator CONFIG=MediumBoomConfig
 
 WORKDIR /llvm_book
 

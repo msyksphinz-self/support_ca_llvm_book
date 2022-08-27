@@ -38,9 +38,14 @@ RUN sed -i '/build_project riscv-openocd/s/^/#/g' build.sh
 RUN sed -i '/build_project riscv-tests/s/^/#/g' build.sh
 RUN  MAKEFLAGS="-j$(nproc)" ./build.sh
 
-#
+# =================================
 # Install Chipyard
-#
+# =================================
+RUN apt install -y git perl python3 make autoconf g++ flex bison ccache
+RUN apt install -y libgoogle-perftools-dev numactl perl-doc
+RUN apt install -y libfl2  # Ubuntu only (ignore if gives error)
+RUN apt install -y libfl-dev  # Ubuntu only (ignore if gives error)
+
 WORKDIR /llvm_book
 RUN git clone https://github.com/ucb-bar/chipyard.git -b 1.3.0
 WORKDIR /llvm_book/chipyard
@@ -50,12 +55,10 @@ RUN git submodule update --init --recursive generators/rocket-chip; exit 0  # In
 RUN sed -i "s/git:/https:/g" generators/rocket-chip/torture/.gitmodules
 RUN git submodule sync --recursive
 RUN ./scripts/init-submodules-no-riscv-tools.sh
+RUN LD_LIBRARY_PATH="" ./scripts/build-toolchains.sh riscv-tools
 Shell ["/bin/bash", "-c"]
-# RUN MAKEFLAGS="-j$(nproc)" ./scripts/build-toolchains.sh riscv-tools
-# RUN . ./env.sh
-# ENV PATH            $RISCV/bin:$PATH
-# ENV LD_LIBRARY_PATH $RISCV/lib:$LD_LIBRARY_PATH
-# RUN MAKEFLAGS="-j$(nproc)" ./scripts/build-toolchains.sh ec2fast
+RUN . ./env.sh
+RUN . ./env-riscv-tools.sh
 
 # =================================
 # Option : Make Rocket-Chip / BOOM
@@ -78,9 +81,9 @@ RUN apt update
 RUN apt install -y sbt
 RUN apt install -y texinfo gengetopt
 RUN apt install -y libexpat1-dev libusb-dev libncurses5-dev cmake
-WORKDIR /llvm_book/chipyard/sims/verilator
-RUN make CONFIG=RocketConfig
-RUN make CONFIG=MediumBoomConfig
+WORKDIR /llvm_book/chipyard/
+RUN . ./env.sh && . ./env-riscv-tools.sh && make -C ./sims/verilator CONFIG=RocketConfig
+RUN . ./env.sh && . ./env-riscv-tools.sh && make -C ./sims/verilator CONFIG=MediumBoomConfig
 
 # =================================
 # Download and Build LLVM
