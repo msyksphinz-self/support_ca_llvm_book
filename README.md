@@ -44,6 +44,10 @@ LLVM12で確認を行っています。LLVM13、LLVM14でも同様のコミッ�
 
 https://github.com/msyksphinz-self/llvm-myriscvx-tests
 
+## 本書の環境を含んだDockerコンテナ
+
+[本書の環境を含んだDockerコンテナ](docker/README.md)をリリースします。
+
 ## LLVMビルド時の推奨オプション
 
 本文では記載抜けしていましたが、RISC-Vビルドでの各種ライブラリ(`printf()`など)を扱うために`-DDEFAULT_SYSROOT=`オプションを適切に設定することが推奨されます。具体的には、以下のように`-DDEFAULT_SYSROOT`オプションを追加して、P.70にてツールチェインのインストール場所として使用している` ${HOME}/riscv64_github`を適宜読み替えてください。
