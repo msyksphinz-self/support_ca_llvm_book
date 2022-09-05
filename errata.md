@@ -12,6 +12,12 @@
   - 誤: Calle Saved
   - 正: Callee Saved
 
+- P.71 のRISC-V GNUツールチェインのインストールに関して
+  - P.381のサンプルを試すためには、riscv64-unknown-linux-gnuツールチェイン(Linuxホスト用のGCCツールチェイン)が必要となります。
+  - riscv64-unknown-linux-gnuツールチェインについては、https://github.com/riscv-collab/riscv-gnu-toolchain#installation-linux に従ってビルドしてください。
+  - また、毎度ツールチェインのビルドには時間がかかりますので、以下のリリースタグからビルド済みのバイナリをダウンロードできます。
+  - 例 2022.08.26ビルド済みのバイナリダウンロード: https://github.com/riscv-collab/riscv-gnu-toolchain/releases/tag/2022.08.26
+
 - P.71 riscv-toolsのビルド (https://github.com/msyksphinz-self/support_ca_llvm_book/issues/6)
   - 本書の確認した環境以外で、riscv-toolsがビルドに失敗することがあります。
   - riscv-toolsリポジトリ自体が古くなっており、個別にツール群をビルドする必要があります。
