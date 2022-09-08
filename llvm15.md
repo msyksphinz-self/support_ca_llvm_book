@@ -7,6 +7,19 @@ git clone https://github.com/msyksphinz-self/llvm-project.git -b llvm-myriscvx15
 こちらでまだ詳細は未確認なのですが、`-DLLVM_ENABLE_RUNTIMES="libcxx;libcxxabi"`を適用した場合にビルドが失敗します。
 `-DLLVM_ENABLE_RUNTIMES`を無効にして`cmake`オプションを構成すると、ビルドが成功することを確認しました。
 
+
+- ビルドオプション
+
+```sh
+cmake -G Ninja \
+      -DDEFAULT_SYSROOT=${HOME}/riscv_github/riscv64-unknown-elf \
+      -DCMAKE_BUILD_TYPE="Debug" \
+      -DLLVM_TARGETS_TO_BUILD="host;MYRISCVX" \
+      -DLLVM_ENABLE_PROJECTS="clang" ../llvm
+ninja
+```
+
+
 ## LLVM15向けの修正項目の詳細
 
 - `MYRISCVX.h`に`PassRegistry`のクラス宣言を追加する必要があります。
