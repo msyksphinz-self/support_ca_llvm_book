@@ -4,6 +4,10 @@
   - 誤: 「それぞれ32ビット、8ビット、16ビットのデータを読み出す例です」
   - 正: 「それぞれ32ビット、8ビット、16ビットのデータをメモリに書き込む例です」
 
+- P.51の図に関して (詳細は [#26](https://github.com/msyksphinz-self/support_ca_llvm_book/issues/26) を参照ください)
+  - https://msyksphinz.hatenablog.com/entry/2020/06/19/040000 を引用しています。
+  - long doubleがARMが64bit, x86が80bitと、それぞれnativeでsupportしているformatであるのに対して、RISC-V ABIではISAがsupportしていない 128bitの formatを指定していることがポイントです。
+
 - P.64 2段落目
   - 誤: Machine Execption Program Counter
   - 正: Machine Exception Program Counter
