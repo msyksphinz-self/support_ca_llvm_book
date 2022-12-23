@@ -92,6 +92,10 @@
   - 誤: `LowerRetrun()`
   - 正: `LowerReturn()`
 
+- P.194 コマンド内の`-c`が抜けています
+  - 誤: `$ ${BUILD}/bin/clang -target riscv32-unknown-elf simple_func.c -emit-llvm -o simple_func.bc`
+  - 正: `$ ${BUILD}/bin/clang -target riscv32-unknown-elf simple_func.c -c -emit-llvm -o simple_func.bc`
+
 - P.195
 
   - 誤: `simple_test.ll`というファイルを作成します
@@ -101,14 +105,14 @@
 
 - P.201 図16に誤りが含まれています
 
-  
+
   - ![figure16_fix](figure16_fix.PNG)
-  
+
 - P.202
 
-  
+
   - 0x12345defの生成の生成フローとなっているが、図17に準ずると0x01234defの生成が正しい
-  
+
 - P.210 / P.213
 
   - ソースコード・コマンド内のファイル名表記にぶれがあります
@@ -248,4 +252,3 @@
 
   - 誤: ソースコードのパス`llvm-myriscvx120/test/CodeGen/RISCV`
   - 正: ソースコードのパス`llvm-myriscvx120/llvm/test/CodeGen/RISCV`
-
