@@ -8,6 +8,10 @@
   - https://msyksphinz.hatenablog.com/entry/2020/06/19/040000 を引用しています。
   - long doubleがARMが64bit, x86が80bitと、それぞれnativeでsupportしているformatであるのに対して、RISC-V ABIではISAがsupportしていない 128bitの formatを指定していることがポイントです。
 
+- P.54 図4
+  - 命令フォーマットにおける、rs2の部分は24-22ではなく、24-20の誤りです。
+  - また、funct7における27,26は不要です。
+
 - P.64 2段落目
   - 誤: Machine Execption Program Counter
   - 正: Machine Exception Program Counter
@@ -73,6 +77,9 @@
 - P.127 3段落目
   - 誤: `SubtargetFeature`のに与えている
   - 正: `SubtargetFeature`に与えている
+
+- P.133: 図15
+  - 命令フォーマットにおいて、31ビット目のインデックスが重複しています。2つ目は30が正しいです。
 
 - P.141 `MYRISCVXCallingConv.td`コード内
   - 誤: Calee Saved
