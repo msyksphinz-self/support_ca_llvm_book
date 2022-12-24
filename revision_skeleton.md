@@ -1,7 +1,7 @@
 - 第4章：「LLVMバックエンドの仕組み」
 
   - P.123「LLVMのバックエンドを作るための第一歩」「LLVMをビルドして確認する」
-      - `2467c9de6339`
+      - revision:Initial registration of MYRISCVX
       - `Initial registration of MYRISCVX`
       - ビルド方法は書籍の通り。確認方法(M1 Macでの実行結果)
 
@@ -27,7 +27,7 @@
 
 
   - P.158「ターゲット記述ファイル(tdファイル)の作成」「LLVMをビルドして確認する」
-      - `cc3e27069728`
+      - revision:Add MCTargetDesc/MYRISCVXTargetStreamer
       - `Add MCTargetDesc/MYRISCVXTargetStreamer`
       - コンパイル手順
 
@@ -39,7 +39,7 @@
 - 第5章：「簡単な関数や演算のサポート」
 
   - P.194「シンプルな関数をコンパイルできるようにする」「コンパイルと確認」
-      - `f0f63bbf9758`
+      - revision:TestPattern: Add zero_return.ll in CodeGen
       - `TestPattern: Add zero_return.ll in CodeGen`
       - コンパイル手順
 
@@ -56,7 +56,7 @@
 
 
   - P.213「関数が戻り値を返せるようにする」「LLVMのビルドとテスト」
-    - `534564619942`
+    - revision:TestPattern: Update zero_return.ll
     - `TestPattern: Update zero_return.ll`
     - コンパイル手順
 
@@ -72,7 +72,7 @@
 
 
   - P.227「関数のプロローグ・エピローグに必要な新規命令の実装」「ロード・ストア命令の生成を確かめる」
-    - `34ea39dcdf87`
+    - revision:Implement Memory Access Instructions
     - `Implement Memory Access Instructions`
     - コンパイル手順
 
@@ -84,7 +84,7 @@
 
 
   - P.243「関数のプロローグ・エピローグの実装」「スタックフレーム生成の様子を観察する」
-    - `9dc9778bef81`
+    - revision:TestPattern: function arguments
     - `TestPattern: function arguments`
     - 注意：このコミットの時点では、`func_arg.c`の`myriscvx64`でのコンパイルは、算術演算命令の定義不足のためコンパイルできません。
     - コンパイル手順
@@ -97,7 +97,7 @@
 
 
   - P.245「引数の受け取りを確認する」
-    - `9dc9778bef81`
+    - revision:TestPattern: function arguments
     - `TestPattern: function arguments`
     - 注意：このコミットの時点では、`func_argument.c`の`myriscvx64`でのコンパイルは、算術演算命令の定義不足のためコンパイルできません。
     - コンパイル手順
@@ -111,11 +111,11 @@
 
 - 第6章：「算術演算・グローバル変数・ポインタ・制御構文のサポート」
   - P.269「算術・論理・比較命令の生成」「ここまでの実装をコンパイルしてテストする」
-    - `c89c93a2f4c4`
+    - revision:Implement Arithmetic Instructions
     - `Implement Arithmetic Instructions`
 
   - P.274「RV64のみで定義されている算術命令を追加する」「ここまでの実装をコンパイルしてテストする」
-    - `75786727ed9c`
+    - revision:Add 32-bit instructions for RV64
     - `Add 32-bit instructions for RV64`
 
     - 注：Clangが生成するLLVM IRが変更され、現在の実装ではADDIW命令を想定通り生成することが出来ません。原因は引数の仕様変更です。
@@ -156,7 +156,7 @@
 
 
   - P.279：「マイナス値、大きな値のコンパイルテスト」
-    - `a2dfc896d963`
+    - revision:TestPattern: add long_value.ll
     - `TestPattern: add long_value.ll`
 
   - P.284「比較命令のコンパイルテスト」
@@ -169,7 +169,7 @@
     ```
 
   - P.290「ローテート操作をコンパイルする」
-    - `f0381f5e59b6`
+    - revision:TestPattern: Add rotate.ll
     - `TestPattern: Add rotate.ll`
     - コンパイル手順
 
@@ -181,7 +181,7 @@
 
 
   - P.333「グローバル変数のサポート」「LLVMをコンパイルしてテストする」
-    - `2bdcb633ac37`
+    - revision:TestPattern: Add global_variable.static.ll & global_variable.pic.ll
     - `TestPattern: Add global_variable.static.ll & global_variable.pic.ll`
     - コンパイル手順
 
@@ -192,7 +192,7 @@
 
   - P.339「ポインタを扱う命令のLLVM動作確認」
 
-    - `f9986e43ae4e`
+    - revision:TestPattern: add load_pointer.static.ll & load_pointer.pic.ll
     - `TestPattern: add load_pointer.static.ll & load_pointer.pic.ll`
 
     - コンパイル手順
@@ -206,7 +206,7 @@
 
   - P.341「ポインタ・配列・構造体のサポート」「配列のサポートの確認」
 
-    - `0bd8dc66d928`
+    - revision:TestPattern: add int_array.static.ll & int_array.pic.ll
     - `TestPattern: add int_array.static.ll & int_array.pic.ll`
 
     - Clangの最適化が進み本書で示しているコードではコンパイルに成功しません(`memcpy`が生成されるようです)
@@ -244,7 +244,7 @@
 
   - P.345「構造体のサポートの確認」
 
-    - `fb6e9c229f7d`
+    - revision:TestPattern: add struct_char.static.ll & struct_pattern_match.static.ll
     - `TestPattern: add struct_char.static.ll & struct_pattern_match.static.ll`
 
     - `if`文が入っており、現在のままではコンパイルに成功しません。
@@ -280,7 +280,7 @@
 
   - P.369「条件分岐や繰り返しの生成」「LLVMのビルドと確認」
 
-    - `88aa12436c00`
+    - revision:Implement Jump and Branch Instructions
     - `Implement Jump and Branch Instructions`
 
     - コンパイル手順
@@ -294,7 +294,7 @@
 
   - P.380「条件分岐や繰り返しの生成」「三項演算子をサポートするためのLLVM実装」「LLVMのビルドと確認」
 
-    - `6ea7350b3b78`
+    - revision:Implement Ternary operator
     - `Implement Ternary operator`
 
     - コンパイル手順
@@ -308,7 +308,7 @@
 
   - P.383「条件分岐や繰り返しの生成」「switch文のサポート」「LLVMのビルドと確認」
 
-    - `d5964e2688b2`
+    - revision:Implement Switch operations
     - `Implement Switch operations`
 
     - コンパイル手順
@@ -322,7 +322,7 @@
 
   - P.404「関数呼び出しのサポート」「LLVMのビルドと確認」
 
-    - `5edcb8f9613f`
+    - revision:Implement callPtrInfo
     - `Implement callPtrInfo`
 
     - コンパイル手順
@@ -336,7 +336,7 @@
 
 - 第7章「オブジェクトファイル・ELFファイルのサポート」
     - P.462「LLVMでオブジェクトファイルを生成する」
-      - `5291eced5b78`
+      - revision:TestPattern: Update test pattern for split LLA/LA
       - `TestPattern: Update test pattern for split LLA/LA`
 
       - コンパイル手順
@@ -356,7 +356,7 @@
 
     - P.483「アセンブリ命令による確認」
 
-        - `a0f30883be7f`
+        - revision:Add MYRISCVXAsmParser
         - `Add MYRISCVXAsmParser`
 
         - コンパイル手順
@@ -368,7 +368,7 @@
 
 
     - P.493「疑似命令の生成確認」
-        - `d941f333b31d`
+        - revision:TestPattern: add myriscvx32i-valid.s & myriscvx64i-valid.s
         - `TestPattern: add myriscvx32i-valid.s & myriscvx64i-valid.s`
 
         - コンパイル手順
@@ -378,7 +378,7 @@
         $ make pseudo_inst
         ```
     - P.496「インラインアセンブリの動作確認」
-        - `cbca903544cb`
+        - revision:Add CSR instructions
         - `Add CSR instructions`
 
         - コンパイル手順
