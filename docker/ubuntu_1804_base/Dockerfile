@@ -11,6 +11,7 @@ RUN apt install -y libfl2  # Ubuntu only (ignore if gives error)
 RUN apt install -y libfl-dev  # Ubuntu only (ignore if gives error)
 RUN apt install -y libgmp-dev libmpfr-dev libmpc-dev zlib1g-dev vim default-jdk default-jre
 RUN apt install -y libexpat1-dev libusb-dev libusb-1.0-0-dev libncurses5-dev
+RUN apt install -y ninja-build
 
 # install sbt: https://www.scala-sbt.org/release/docs/Installing-sbt-on-Linux.html#Ubuntu+and+other+Debian-based+distributions
 RUN echo "deb https://repo.scala-sbt.org/scalasbt/debian /" | tee -a /etc/apt/sources.list.d/sbt.list
