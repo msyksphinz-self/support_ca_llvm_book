@@ -32,8 +32,8 @@ https://hub.docker.com/repository/docker/msyksphinz/support_llvm
 
 ```sh
 $ cd llvm_work  # ホスト作業環境
-$ wget https://github.com/msyksphinz-self/support_ca_llvm_book/blob/main/docker/ubuntu_1804_onlyenv/work/make_env.sh
-$ wget https://github.com/msyksphinz-self/support_ca_llvm_book/blob/main/docker/ubuntu_1804_onlyenv/work/run.sh
+$ wget https://raw.githubusercontent.com/msyksphinz-self/support_ca_llvm_book/main/docker/ubuntu_1804_onlyenv/work/make_env.sh
+$ wget https://raw.githubusercontent.com/msyksphinz-self/support_ca_llvm_book/main/docker/ubuntu_1804_onlyenv/work/run.sh
 ```
 
 2. 最初にDockerイメージを立ち上げる前に一度だけ、`make_env.sh`を実行します。
